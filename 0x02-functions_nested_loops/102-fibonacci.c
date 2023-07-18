@@ -21,7 +21,7 @@ int main(void)
 		j = tmp;
 		count++;
 	}
-	if (count == 50)
+	if (count == 49)
 		printf("%ld\n", j);
 	return (0);
 }
