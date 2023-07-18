@@ -13,15 +13,16 @@ int main(void)
 	int count = 2;
 
 	printf("1, 2, ");
-	while (count < 49)
+	while (count < 50)
 	{
-		printf("%ld, ", i + j);
+		if (count == 49)
+			printf("%ld\n", i + j);
+		else
+			printf("%ld, ", i + j);
 		tmp = i + j;
 		i = j;
 		j = tmp;
 		count++;
 	}
-	if (count == 49)
-		printf("%ld\n", j);
 	return (0);
 }
