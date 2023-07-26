@@ -10,7 +10,7 @@
 int _atoi(char *s)
 {
 	int i, j, num = 0;
-	int sign = 1;
+	unsigned int sign = 1;
 
 	for (i = 0; (s[i] < '0' || s[i] > '9') && s[i] != 0; i++)
 	{
