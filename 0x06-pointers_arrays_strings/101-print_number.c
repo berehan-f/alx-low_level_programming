@@ -7,18 +7,18 @@
 
 void print_number(int n)
 {
-	int x;
-	int tmp, power = 1;
+	unsigned int x, y = n;
+	unsigned int tmp, power = 1;
 
 	if (n < 0)
 	{
-		n = -n;
+		y = -n;
 		_putchar('-');
 	}
-	for (x = n; x % 10 != x; x /= 10)
+	for (x = y; x % 10 != x; x /= 10)
 		power *= 10;
 
-	for (x = n; power > 0; power /= 10)
+	for (x = y; power > 0; power /= 10)
 	{
 		tmp = x / power;
 		_putchar(tmp % 10 + '0');
