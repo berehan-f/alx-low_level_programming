@@ -60,7 +60,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		store = sum % 10;
 		r = add_ints(r, index, size_r - 1, store, carry);
 
-		if (r == NULL)
+		if (r == 0)
 			return (0);
 	}
 	if (carry > 0)
