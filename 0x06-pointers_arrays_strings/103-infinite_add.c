@@ -24,9 +24,7 @@ char *add_ints(char *r, int index, int size_r, int store, int carry)
 			continue;
 		r[i - 1] = r[i - 2];
 	}
-	r[index + 1] = 0;
 	r[i] = store + '0';
-
 	return (r);
 }
 /**
@@ -65,5 +63,20 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		if (r == NULL)
 			return (0);
 	}
+	if (carry > 0)
+	{
+		for (i = index; i > 0; i--)
+		{
+			r[i] = r[i - 1];
+			if (i == 1)
+			{
+				r[i - 1] = carry + '0';
+				break;
+			}
+			r[i - 1] = r[i - 2];
+		}
+		index++;
+	}
+	r[index] = '\0';
 	return (r);
 }
