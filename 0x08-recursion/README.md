@@ -1,5 +1,5 @@
 # Name of project: 0x08. C - Recursion
-### Learning objectives:
+## Learning objectives:
 	- What is recursion
 	- How to implement recursion
 	- In what situations you should implement recursion
