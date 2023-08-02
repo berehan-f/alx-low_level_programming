@@ -1,9 +1,9 @@
 /**
- * is_palindrome - checks if the string is palindrome.
- * @S: the string to check.
- * Return: 1 if the string is palindrome,
- *         0 otherwise.
+ * str_len - returns the final index of a string.
+ * @s: the string to compute the final index of.
+ * Return: string length - 1.
  */
+
 int str_len(char *s)
 {
 	int i = 1;
@@ -12,6 +12,13 @@ int str_len(char *s)
 		return (i - 1);
 	return (i + str_len(s + 1));
 }
+
+/**
+ * compare - compares characters in strings.
+ * @s1: the first string to compare.
+ * @s2: the second string to compare.
+ * Return: 1 if equal, 0 otherwise.
+ */
 
 int compare(char *s1, char *s2)
 {
@@ -25,6 +32,13 @@ int compare(char *s1, char *s2)
 		return (1);
 	return (0);
 }
+
+/**
+ * is_palindrome - checks if the string is palindrome.
+ * @s: the string to check.
+ * Return: 1 if the string is palindrome,
+ *         0 otherwise.
+ */
 
 int is_palindrome(char *s)
 {
