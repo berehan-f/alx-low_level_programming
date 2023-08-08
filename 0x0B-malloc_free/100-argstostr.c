@@ -25,7 +25,7 @@ int get_length(char *s)
 char *argstostr(int ac, char **av)
 
 {
-	int i, j, k = 0, len;
+	int i, j, k = 0, len = 0;
 	char *concat;
 
 	if (ac == 0 || av == NULL)
