@@ -23,6 +23,7 @@ int get_length(char *s)
  */
 
 char *argstostr(int ac, char **av)
+
 {
 	int i, j, k = 0, len;
 	char *concat;
@@ -33,7 +34,7 @@ char *argstostr(int ac, char **av)
 	for (i = 0; i < ac; i++)
 		len += (get_length(av[i]) + 1);
 
-	len++;
+
 	concat = (char *) malloc(sizeof(char) * len);
 
 	if (concat == NULL)
