@@ -14,10 +14,12 @@ char *_strdup(char *str)
 
 	if (str == 0)
 		return (0);
-	for (i = 0; str[i]; i++)
-		;
+	do {
+		i++;
+	} while (str[i]);
+
 	copy = malloc(sizeof(char) * i);
-	if (copy != 0 && i != 0)
+	if (copy != 0)
 	{
 		for (j = 0; j <= i; j++)
 			copy[j] = str[j];
