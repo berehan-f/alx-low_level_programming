@@ -44,6 +44,8 @@ char **strtow(char *str)
 		return (NULL);
 
 	word_num = get_word_num(str);
+	if (word_num == 0)
+		return (NULL);
 
 	words = (char **) malloc((word_num + 1) * sizeof(char *));
 
