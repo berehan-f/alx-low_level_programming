@@ -37,7 +37,7 @@ int get_word_num(char *str)
 
 char **strtow(char *str)
 {
-	int i, j = 0, k = 0, word_num, word_length = 0, str_start, str_length;
+	int i, j = 0, k = 0, word_num, word_length = 0, str_start, str_length = 0;
 	char **words;
 
 	if (str == NULL || *str == 0)
