@@ -37,7 +37,7 @@ int get_word_num(char *str)
 
 char **strtow(char *str)
 {
-	int i, j = 0, k = 0, word_num, word_length = 0, str_start;
+	int i, j = 0, k = 0, word_num, word_length = 0, str_start, str_length;
 	char **words;
 
 	if (str == NULL || *str == 0)
@@ -52,7 +52,10 @@ char **strtow(char *str)
 	if (words == NULL)
 		return (NULL);
 
-	for (i = 0; str[i]; i++)
+	while (*(str + str_length))
+		str_length++;
+
+	for (i = 0; i <= str_length; i++)
 	{
 		if (str[i] == ' ' || str[i] == '\0')
 		{
