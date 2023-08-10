@@ -15,7 +15,7 @@ int main(void)
 
 	srand(time(0));
 
-	for (total; total < 2772; total += passcode[i], i++)
+	for (; total < 2772; total += passcode[i], i++)
 		passcode[i] = 33 + rand() % 94;
 
 	passcode[i] = '\0';
