@@ -292,6 +292,11 @@ int main(int argc, char **argv)
 
 	for (i = 0, j = 1; i <= len2 - 1; i+=2)
 	{
+		if (len2 == 1)
+		{
+			array = factors[0];
+			break;
+		}
 		if (i == len2 - 1)
 			final = infinite_add(factors[i], array, final, 100 * (i + j));
 		else
