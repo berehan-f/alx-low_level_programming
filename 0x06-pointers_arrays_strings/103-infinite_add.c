@@ -8,10 +8,10 @@
 
 char *trim(char *s)
 {
-        if (*s == '0')
-                return (trim(s + 1));
-        else
-                return (s);
+	if (*s == '0')
+		return (trim(s + 1));
+	else
+		return (s);
 }
 
 /**
@@ -43,6 +43,40 @@ char *add_ints(char *r, int index, int size_r, int store, int carry)
 	return (r);
 }
 /**
+ * shift_integers - shifts array elements to the right of the buffer.
+ * @r: the buffer.
+ * @carry: carry to be added to the buffer.
+ * @index: length of the previous sum.
+ * Return: the shifted string.
+ */
+
+char *shift_integers(char *r, int carry, int index)
+{
+	int i;
+
+	if (carry > 0)
+	{
+		for (i = index; i > 0; i--)
+		{
+			r[i] = r[i - 1];
+
+			if (i == 1)
+			{
+				r[i - 1] = carry + '0';
+				break;
+			}
+
+			r[i - 1] = r[i - 2];
+		}
+
+	index++;
+	}
+
+	return (r);
+}
+
+
+/**
  * infinite_add - adds two strings of numbers.
  * @n1: the first number in string format to be added.
  * @n2: the second number in string format to be added.
@@ -57,6 +91,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
 	int i, j, sum, carry = 0;
 	int store, index = 0;
+
 	n1 = trim(n1);
 	n2 = trim(n2);
 
@@ -80,20 +115,9 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		if (r == 0)
 			return (0);
 	}
-	if (carry > 0)
-	{
-		for (i = index; i > 0; i--)
-		{
-			r[i] = r[i - 1];
-			if (i == 1)
-			{
-				r[i - 1] = carry + '0';
-				break;
-			}
-			r[i - 1] = r[i - 2];
-		}
-		index++;
-	}
+
+	r = shift_integers(r, carry, index);
 	r[index] = '\0';
+
 	return (r);
 }
