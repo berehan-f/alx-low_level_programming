@@ -1,4 +1,19 @@
 #include "main.h"
+
+/**
+ * trim - removes initial zeros from string.
+ * @s: the string to trim.
+ * Return: pointer to the trimmed string.
+ */
+
+char *trim(char *s)
+{
+        if (*s == '0')
+                return (trim(s + 1));
+        else
+                return (s);
+}
+
 /**
  * add_ints - adds two ints.
  * @r: string.
@@ -13,7 +28,7 @@ char *add_ints(char *r, int index, int size_r, int store, int carry)
 {
 	int i;
 
-	if (index >= size_r)
+	if (index > size_r - 1)
 		return (0);
 	else if (index == size_r - 1 && carry > 0)
 		return (0);
@@ -42,6 +57,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
 	int i, j, sum, carry = 0;
 	int store, index = 0;
+	n1 = trim(n1);
+	n2 = trim(n2);
 
 	for (i = 0; n1[i + 1]; i++)
 		;
