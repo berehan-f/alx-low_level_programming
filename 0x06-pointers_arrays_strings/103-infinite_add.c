@@ -50,13 +50,13 @@ char *add_ints(char *r, int index, int size_r, int store, int carry)
  * Return: the shifted string.
  */
 
-char *shift_integers(char *r, int carry, int index)
+char *shift_integers(char *r, int carry, int *index)
 {
 	int i;
 
 	if (carry > 0)
 	{
-		for (i = index; i > 0; i--)
+		for (i = *index; i > 0; i--)
 		{
 			r[i] = r[i - 1];
 
@@ -69,7 +69,7 @@ char *shift_integers(char *r, int carry, int index)
 			r[i - 1] = r[i - 2];
 		}
 
-	index++;
+	(*index)++;
 	}
 
 	return (r);
@@ -116,7 +116,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			return (0);
 	}
 
-	r = shift_integers(r, carry, index);
+	r = shift_integers(r, carry, &index);
 	r[index] = '\0';
 
 	return (r);
