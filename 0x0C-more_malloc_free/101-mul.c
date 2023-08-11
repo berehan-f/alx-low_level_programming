@@ -111,7 +111,25 @@ char *string_shift(char *s, int size)
 		s[i] = s[i - 1];
 	return (s);
 }
+/**
+ * rev_string - reverses a string
+ * @s: the string to reverse
+ */
 
+void rev_string(char *s, int j)
+{
+	char tmp;
+	int i = 0, k = 0;
+
+	while (i <= j)
+		i++;
+	while (k < --i)
+	{
+		tmp = s[i];
+		s[i] = s[k];
+		s[k++] = tmp;
+	}
+}
 /**
  * factor_shift - adds zeros for result of multiplication depending on position
  * @factors: all factors to be shifted.
@@ -151,7 +169,6 @@ int is_digit(char *s)
 		if (*s >= '0' && *s <= '9')
 		{
 			s++;
-			continue;
 		}
 		else
 			return (0);
@@ -168,10 +185,10 @@ int is_digit(char *s)
 
 int str_len(char *s)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; s[i]; i++)
-		;
+	while (s[i])
+		i++;
 	return (i);
 }
 
@@ -191,6 +208,8 @@ char *digit_multiply(char *mul1, int num, int len1)
 	int j = 1;
 
 	s = malloc(sizeof(char));
+	if (s == NULL)
+	     return (NULL);
 
 	while (i >= 0)
 	{
@@ -205,13 +224,18 @@ char *digit_multiply(char *mul1, int num, int len1)
 			s = realloc((void *) s, j + 1);
 			s = string_shift(s, j + 1);
 		}
-		if (i == 0)
+		if (i == 0 && carry != 0)
 			s[0] = carry + '0';
 
 		j++;
 		i--;
 	}
-	s = realloc((void *) s, j);
+	s = realloc(s, j);
+	if (s == NULL)
+	{
+		printf("Error reallocating\n");
+		exit(1);
+	}
 	s[j - 1] = '\0';
 
 	return (s);
@@ -228,9 +252,11 @@ int main(int argc, char **argv)
 {
 	char *mul1, *mul2;
 	char *final = malloc(sizeof(char) * 100);
-	char *array;
+	char *array = final;
 	char **factors;
 	int i, j, len1, len2, num;
+
+	final[99] = 0;
 
 	if (argc != 3)
 	{
@@ -264,9 +290,12 @@ int main(int argc, char **argv)
 
 	factors = factor_shift(factors, len2);
 
-	for (i = 0, j = 1; i < len2 - 1; i++)
+	for (i = 0, j = 1; i <= len2 - 1; i+=2)
 	{
-		array = infinite_add(factors[i], factors[i + 1], final, 100 * (i + j));
+		if (i == len2 - 1)
+			final = infinite_add(factors[i], array, final, 100 * (i + j));
+		else
+			final = infinite_add(factors[i], factors[i + 1], final, 100 * (i + j));
 		while (array == 0)
 			final = realloc(final, 100 * (i + (++j)));
 	}
