@@ -1,7 +1,7 @@
 /**
- * _pow_recursion - returns the value of x raised to the power of y.
+ * _pow_recursion - calculates the value of x raised to the power of y.
  * @x: the base number.
- * @y: the exponent.
+ * @y: the exponent number.
  * Return: x ^ y.
  */
 
@@ -11,5 +11,6 @@ int _pow_recursion(int x, int y)
 		return (-1);
 	if (y == 0)
 		return (1);
+
 	return (x * _pow_recursion(x, y - 1));
 }
