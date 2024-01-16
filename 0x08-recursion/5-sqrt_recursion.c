@@ -8,9 +8,9 @@
 
 int checksquare(int n, int x)
 {
-	if (x > n / 2)
+	if (x > n)
 		return (-1);
-	if (n / x == x && n % x == 0)
+	if (x * x == n)
 		return (x);
 	return (checksquare(n, x + 1));
 }
