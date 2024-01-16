@@ -1,28 +1,31 @@
 /**
- * check - checks if a number has a square root.
- * @n: the number to check.
+ * checksquare - checks if a number has square root.
+ * @n: the number whose square root to check.
  * @x: check if x is the square root of n.
- * Return: the square root of n, or -1 otherwise.
+ * Return: x if x is natural square root of n.
+ *         -1 if n doesn't have a square root.
  */
 
-int check(int n, int x)
+int checksquare(int n, int x)
 {
-	if (n < x)
+	if (x > n / 2)
 		return (-1);
-	if (x * x == n)
+	if (n / x == x && n % x == 0)
 		return (x);
-	return (check(n, x + 1));
+	return (checksquare(n, x + 1));
 }
 
 /**
- * _sqrt_recursion - returns the natural square root of a number.
- * @n: the number whose square root to compute.
- * Return: the natural square root of n.
+ * _sqrt_recursion - find the natural square root of a number.
+ * @n: the number whose square root to find.
+ * Return: the square root of n.
  */
 
 int _sqrt_recursion(int n)
 {
-	int result = check(n, 1);
+	int sqrt;
+	int i = 1;
 
-	return (result);
+	sqrt = checksquare(n, i);
+	return (sqrt);
 }
