@@ -5,11 +5,11 @@
 
 int getlen(char *s)
 {
-	int i;
 
-	for (i = 0; s[i]; i++)
-		;
-	return (i);
+	if (*s != 0)
+		return (1 + getlen(s + 1));
+
+	return (0);
 }
 
 /**
