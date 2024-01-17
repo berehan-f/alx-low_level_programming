@@ -43,13 +43,13 @@ char *argstostr(int ac, char **av)
 
 	for (i = 0; i < ac; i++)
 	{
-		for (j = 0; j < get_length(av[i]); ++j)
+		for (j = 0; j < get_length(av[i]); j++)
 		{
 			concat[k] = av[i][j];
 			k++;
 		}
 
-		concat[k] = '\n';
+		concat[k++] = '\n';
 	}
 
 	concat[k] = 0;
