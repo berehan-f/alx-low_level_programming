@@ -1,6 +1,7 @@
 /**
  * getlen - get the length of a string.
  * @s: the string whose length to get.
+ * Return: string length.
  */
 
 int getlen(char *s)
@@ -13,9 +14,13 @@ int getlen(char *s)
 }
 
 /**
- *
- *
+ * charcompare - checks if two different indexes of a string are identical.
+ * @s: the string to check.
+ * @i: first index of the string.
+ * @j: second index of the string.
+ * Return: 1 if opposite indexes are identical, 0 otherwise.
  */
+
 int charcompare(char *s, int i, int j)
 {
 	if (i > j)
@@ -24,6 +29,13 @@ int charcompare(char *s, int i, int j)
 		return (charcompare(s, i + 1, j - 1));
 	return (0);
 }
+
+/**
+ * is_palindrome - checks if a given string is palindrome.
+ * @s: the string to check.
+ * Return: 1 if the string is palindrome, 0 otherwise.
+ */
+
 int is_palindrome(char *s)
 {
 	if (*s == 0)
