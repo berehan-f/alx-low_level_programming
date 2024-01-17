@@ -1,34 +1,29 @@
 /**
- * get_factor_num - get the number of prime factors of an integer.
- * @n: the integer whose total number of prime factors to get.
- * @x: factors.
- * Return: the number of prime factors of n.
+ * checkfactors - check the number of factors of a given number.
+ * @n: the number whose factors to check.
+ * @i: iteration of factors.
+ * Return: 1 if n is prime, 0 otherwise
  */
 
-int get_factor_num(int n, int x)
+int checkfactors(int n, int i)
 {
-	if (n % x == 0 && n >= x)
-		return (1 + get_factor_num(n, x + 1));
-	else if (n % x != 0 && n >= x)
-		return (get_factor_num(n, x + 1));
-	return (0);
+	if (i == n && i != 1)
+		return (1);
+	else if (n % i == 0 && i != 1)
+		return (0);
+	else if (i < n)
+		return (checkfactors(n, i + 1));
+	else
+		return (0);
 }
 
 /**
- * is_prime_number - check for a prime number.
- * @n: the number to be checked.
- * Return: 1 if the input integer is a prime number,
- *         0 otherwise.
+ * is_prime_number - test if a given number is prime.
+ * @n: the number to test.
+ * Return: 1 if n is prime, 0 otherwise.
  */
 
 int is_prime_number(int n)
 {
-	int x = 1, factor_num;
-
-	factor_num = get_factor_num(n, x);
-
-	if (factor_num == 2)
-		return (1);
-	return (0);
+	return (checkfactors(n, 1));
 }
-
