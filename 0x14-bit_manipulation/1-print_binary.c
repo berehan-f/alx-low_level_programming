@@ -11,7 +11,10 @@ void print_binary(unsigned long int n)
 	unsigned int tmp;
 
 	if (n == 0)
+	{
 		_putchar('0');
+		return;
+	}
 	for (tmp = n; tmp; tmp >>= 1)
 		i++;
 	for (i = i - 1; i >= 0; i--)
