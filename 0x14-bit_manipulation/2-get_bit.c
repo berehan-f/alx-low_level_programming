@@ -9,7 +9,8 @@
 
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int j, i = 0, base = 2, size = 64, new_size, num;
+	unsigned long int j, i = 0, base = 2, size = 64, new_size;
+	int num;
 	char *bits, *tmp;
 
 	bits = malloc(size);
