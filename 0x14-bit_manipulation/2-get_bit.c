@@ -9,7 +9,7 @@
 
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int j, i = 0, base = 2, size = 64, new_size;
+	unsigned int j, i = 0, base = 2, size = 64, new_size, num;
 	char *bits, *tmp;
 
 	bits = malloc(size);
@@ -26,12 +26,18 @@ int get_bit(unsigned long int n, unsigned int index)
 				tmp[j] = bits[j];
 			free(bits);
 			bits = tmp;
+			size = new_size;
 		}
 		bits[i++] = n % base;
 		n /= base;
 	} while (n);
 
 	if (index < i)
-		return (bits[index]);
+	{
+		num = bits[index];
+		free(bits);
+		return (num);
+	}
+	free(bits);
 	return (-1);
 }
