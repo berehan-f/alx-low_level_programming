@@ -13,7 +13,7 @@ int get_bit(unsigned long int n, unsigned int index)
 	char *bits, *tmp;
 
 	bits = malloc(size);
-	if (bits == NULL)
+	if (bits == NULL || index >= 64)
 		return (-1);
 	do {
 		if (i >= size)
